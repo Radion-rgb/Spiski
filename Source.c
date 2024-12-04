@@ -30,7 +30,7 @@ int main() {
     comparePerformanceLinkedList(linkedList);
 
     free(arrayList);
-    // Free linked list memory
+ // Звільнення пам'яті зв'язаного списку
     Node* temp;
     while (linkedList != NULL) {
         temp = linkedList;
@@ -58,7 +58,7 @@ void fillLinkedList(Node** head, int size) {
 void comparePerformanceArrayList(int* list) {
     printf("Performance for ArrayList\n");
 
-    // Random Access
+ // Довільний доступ
     clock_t start = clock();
     for (int i = 0; i < LIST_SIZE; i++) {
         int value = list[i];
@@ -66,7 +66,7 @@ void comparePerformanceArrayList(int* list) {
     clock_t end = clock();
     printf("Random Access: %ld ms\n", (end - start) * 1000 / CLOCKS_PER_SEC);
 
-    // Sequential Access
+    // Послідовний доступ
     start = clock();
     for (int i = 0; i < LIST_SIZE; i++) {
         int value = list[i];
@@ -74,7 +74,7 @@ void comparePerformanceArrayList(int* list) {
     end = clock();
     printf("Sequential Access: %ld ms\n", (end - start) * 1000 / CLOCKS_PER_SEC);
 
-    // Insertion at Beginning
+   // Вставка на початку
     start = clock();
     for (int i = 0; i < NUM_INSERTIONS; i++) {
         for (int j = LIST_SIZE - 1; j > 0; j--) {
@@ -85,7 +85,7 @@ void comparePerformanceArrayList(int* list) {
     end = clock();
     printf("Insertion at Beginning: %ld ms\n", (end - start) * 1000 / CLOCKS_PER_SEC);
 
-    // Insertion at End
+  // Вставка в кінці
     start = clock();
     for (int i = 0; i < NUM_INSERTIONS; i++) {
         list[LIST_SIZE - 1] = i;
@@ -93,7 +93,8 @@ void comparePerformanceArrayList(int* list) {
     end = clock();
     printf("Insertion at End: %ld ms\n", (end - start) * 1000 / CLOCKS_PER_SEC);
 
-    // Insertion in Middle
+   
+// Вставка в середині
     start = clock();
     for (int i = 0; i < NUM_INSERTIONS; i++) {
         for (int j = LIST_SIZE - 1; j > LIST_SIZE / 2; j--) {
@@ -110,7 +111,7 @@ void comparePerformanceArrayList(int* list) {
 void comparePerformanceLinkedList(Node* head) {
     printf("Performance for LinkedList\n");
 
-    // Random Access
+    // Довільний доступ
     clock_t start = clock();
     Node* current = head;
     for (int i = 0; i < LIST_SIZE; i++) {
@@ -123,7 +124,7 @@ void comparePerformanceLinkedList(Node* head) {
     clock_t end = clock();
     printf("Random Access: %ld ms\n", (end - start) * 1000 / CLOCKS_PER_SEC);
 
-    // Sequential Access
+  // Послідовний доступ
     start = clock();
     current = head;
     while (current != NULL) {
@@ -133,7 +134,7 @@ void comparePerformanceLinkedList(Node* head) {
     end = clock();
     printf("Sequential Access: %ld ms\n", (end - start) * 1000 / CLOCKS_PER_SEC);
 
-    // Insertion at Beginning
+  // Вставка на початку
     start = clock();
     for (int i = 0; i < NUM_INSERTIONS; i++) {
         insertAtBeginningLinkedList(&head, i);
@@ -141,7 +142,7 @@ void comparePerformanceLinkedList(Node* head) {
     end = clock();
     printf("Insertion at Beginning: %ld ms\n", (end - start) * 1000 / CLOCKS_PER_SEC);
 
-    // Insertion at End
+  // Вставка в кінці
     start = clock();
     for (int i = 0; i < NUM_INSERTIONS; i++) {
         insertAtEndLinkedList(&head, i);
@@ -150,7 +151,7 @@ void comparePerformanceLinkedList(Node* head) {
     printf("Insertion at End: %ld ms\n", (end - start) * 1000 / CLOCKS_PER_SEC);
 
 
-        // Insertion in Middle
+        // Вставка в середині
         start = clock();
     for (int i = 0; i < NUM_INSERTIONS; i++) {
         insertAtMiddleLinkedList(&head, i, LIST_SIZE);
